@@ -15,13 +15,3 @@
 
 Required params for creating user:
 - Send POST request with params (form-data) **id** and **name**.
-
-**Note:** 
-
-I'm simulating DIC in app/routes.php. You can swap out dependencies without touching controller's code.
-For now, we've 2 data sources:
-- UserCSVRepository (reading from csv file - storage/users.csv)
-- UserRepository (reading from plaing array)
-
-I tried build this app framework and software independent.
-I can also **containerize** this app.
