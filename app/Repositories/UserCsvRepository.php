@@ -13,13 +13,11 @@ class UserCsvRepository implements UserRepositoryInterface
 {
     public function all(): array
     {
-        $handle = fopen(BASE_PATH . '/storage/users.csv', "r");
         $users = [];
-        for ($i = 0; $row = fgetcsv($handle ); ++$i) {
-            $data = explode(';', $row[0]);
-            $users[] = new User((int) $data[0], $data[1]);
+        foreach (file(BASE_PATH . '/storage/users.csv') as $line) {
+            $item = explode(';', str_getcsv($line)[0]);
+            $users[] = new User((int) $item[0], $item[1]);
         }
-        fclose($handle);
         return $users;
     }
 
